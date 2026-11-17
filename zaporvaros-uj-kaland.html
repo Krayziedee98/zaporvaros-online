@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090f22"><meta name="description" content="Záporváros: Az első pecsét. Egyjátékos elágazó, történetvezérelt RPG prototípus.">
+<title>Záporváros • Az első pecsét</title>
+<style>
+:root{color-scheme:dark;--bg:#08101f;--panel:#14233a;--panel2:#1a2e48;--edge:#3d5671;--text:#f0f4f8;--muted:#a9bbd3;--gold:#f7c779;--aqua:#8eece9;--rose:#ff99a1;--green:#9ce5b7;--purple:#cba9ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;margin:0;background:radial-gradient(ellipse at top,#1c3550 0,transparent 50%),#08101f;color:var(--text);min-height:100dvh}button,input,select{font:inherit}button{touch-action:manipulation;cursor:pointer;background:#253f5b;color:var(--text);border:1px solid #55718b;border-radius:12px;padding:12px 14px;font-weight:700;min-height:44px;text-align:left}button:hover{background:#325274}button:active{transform:scale(.98)}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.primary{color:#241b16;background:linear-gradient(125deg,#ffdf9b,#f4ba65);border:1px solid #ffc886;text-align:center}.primary:hover{background:#ffeab9}.danger{background:#633b4b;border-color:#a56f82}.quiet{background:#203049}a{color:var(--aqua)}h1,h2,h3{font-family:Georgia,serif;line-height:1.2}h1{font-size:clamp(36px,7vw,64px);margin:10px 0;color:#ffe0a5}h2{margin:5px 0 9px;font-size:26px}h3{margin:6px 0 10px;font-size:20px}p{margin:9px 0;line-height:1.65}.small{font-size:12px;color:var(--muted)}.muted{color:var(--muted)}.eyebrow{text-transform:uppercase;color:var(--aqua);font-size:11px;letter-spacing:2px;font-weight:900}.wrap{max-width:1260px;margin:auto;padding:15px 14px 50px}.header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px;flex-wrap:wrap}.mark{display:flex;align-items:center;gap:9px}.mark .sigil{font-size:30px;background:#29415d;border:1px solid #57718d;padding:7px;border-radius:14px}.brand{font:bold 23px Georgia,serif;color:var(--gold)}.headerbuttons{display:flex;gap:6px}.headerbuttons button{padding:8px 10px;min-height:36px;font-size:12px}.panel{background:linear-gradient(145deg,#1a2a44ed,#121f34f5);border:1px solid var(--edge);border-radius:20px;box-shadow:0 14px 44px #0208147a;padding:16px}.cover{max-width:720px;margin:25px auto;overflow:hidden}.heroArt{height:170px;position:relative;overflow:hidden;border-radius:15px;background:linear-gradient(#1b3156,#302647 70%,#171c31)}.heroArt:before{content:'🌙';position:absolute;left:14%;top:2px;font-size:60px;opacity:.8}.heroArt:after{content:'🏰';position:absolute;left:0;right:0;bottom:-48px;font-size:178px;text-align:center;opacity:.7;filter:drop-shadow(0 0 12px #aae4ff38)}.rainsky{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}.rainsky:before{content:'';position:absolute;inset:-50%;background:repeating-linear-gradient(120deg,transparent 0 19px,#a1bfe519 20px,transparent 21px);animation:rain 15s linear infinite;opacity:.35}.rainsky:after{content:'';position:absolute;inset:0;background:#a7d8ff;opacity:0;animation:lightning 19s infinite}@keyframes rain{to{transform:translate(12%,18%)}}@keyframes lightning{0%,93%,94%,96%,100%{opacity:0}93.5%{opacity:.17}95%{opacity:.09}}@keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes bob{50%{transform:translateY(-8px)}}@keyframes boss{0%,100%{transform:translateX(0)}50%{transform:translateX(5px) scale(1.04)}}@keyframes pop{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}.heroChoose{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.heroChoice{position:relative;border:1px solid #526886;border-radius:14px;padding:13px;background:#132741;cursor:pointer}.heroChoice input{position:absolute;opacity:0}.heroChoice:has(input:checked){border-color:var(--gold);background:#463d3c;box-shadow:0 0 0 2px #e9c27d33}.heroChoice span{display:block;font-size:35px}.heroChoice b{display:block}.heroChoice small{color:var(--muted);font-size:11px;line-height:1.4;display:block;margin-top:4px}.label{display:block;font-weight:bold;font-size:13px;margin:13px 0 5px}.nameInput{border:1px solid #637992;background:#091729;color:white;padding:12px;border-radius:11px;width:100%}.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.spread{justify-content:space-between}.stack{display:grid;gap:9px}.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:10px 0 14px}.stat{border:1px solid #385773;border-radius:13px;background:#142740;padding:7px 9px;min-width:0}.stat small{color:var(--muted);font-size:10px;display:block;white-space:nowrap}.stat strong{font-size:21px}.stat .meter{background:#0b1729;height:5px;border-radius:12px;overflow:hidden;margin-top:4px}.stat .meter span{display:block;height:100%;background:linear-gradient(90deg,#e77c85,#ffc17d);transition:width .4s}.columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.86fr);gap:14px;align-items:start}.sceneBox{min-height:450px}.sceneArt{height:155px;display:flex;align-items:center;justify-content:center;position:relative;border-radius:16px;overflow:hidden;background:radial-gradient(ellipse at 55% 20%,#315279,#1b304c 58%,#121b30);border:1px solid #486b8c;margin-bottom:14px}.sceneArt .art{font-size:94px;line-height:1;animation:bob 5s ease-in-out infinite;filter:drop-shadow(0 10px 10px #010819)}.sceneArt .ambient{position:absolute;font-size:22px;opacity:.65;left:9%;top:25%}.sceneArt .ambient2{position:absolute;font-size:28px;opacity:.65;right:10%;bottom:20%}.sceneArt.battle{background:radial-gradient(circle at center,#704658,#19182b 70%)}.sceneArt.battle .art{animation:boss 1s ease-in-out infinite}.sceneBox .story{font-size:15px;color:#d8e4f3;line-height:1.8}.options{display:grid;gap:9px;margin-top:16px}.choice{width:100%;display:flex;justify-content:space-between;gap:13px;align-items:center}.choice span{font-size:12px;color:#bbd4e6;font-weight:500}.choice.primary span{color:#48382d}.info{background:#263b52;border-left:3px solid #f2c884;border-radius:9px;padding:10px 12px;margin:13px 0;color:#e8eaf3;font-size:13px}.alert{background:#5c3744;border-color:#f095a2}.gameSide{display:grid;gap:12px}.mapHead{display:flex;justify-content:space-between;gap:7px;align-items:center}.mapHead h3{margin:0}.mapScroll{max-width:100%;overflow-x:auto;margin:10px -6px 0;padding:5px 6px 10px;scrollbar-color:#5a799c transparent}.mapInner{position:relative;width:670px;height:735px;border:1px solid #42627f;border-radius:17px;overflow:hidden;background:radial-gradient(circle at 25% 30%,#243e59,#101d31 68%)}.mapInner:after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at center,transparent 55%,#060e1c45)}.mapLines{width:100%;height:100%;position:absolute;inset:0;pointer-events:none}.node{position:absolute;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px;border:2px solid #6e8197;border-radius:14px;width:97px;height:60px;font-size:11px;line-height:1.2;background:#1c304d;overflow:hidden}.node .ni{font-size:23px;margin-bottom:3px}.node.current{border-color:#ffe19b;background:linear-gradient(140deg,#6d5542,#2a4262);box-shadow:0 0 16px #ffce7677;animation:pop .3s ease both}.node.available{border-color:#85eacc;background:#1b4b4a;box-shadow:0 0 12px #5be4bb33}.node.visited{background:#203b46;border-color:#53757c}.node.locked{opacity:.48}.node.notseen{opacity:.32}.node:disabled{cursor:default}.mapKey{margin:8px 0 0;font-size:11px;color:var(--muted)}.tabbar{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}.tabbar button{font-size:12px;min-height:36px;padding:6px 9px}.tabbar button.sel{background:#6a5543;border-color:#fac77d}.item{padding:11px;margin-bottom:8px;border:1px solid #415d7a;border-radius:12px;background:#162b43}.item small{display:block;color:var(--muted)}.item button{font-size:11px;min-height:31px;margin-top:6px;padding:5px 10px}.rarity{color:var(--gold)}.miniList{margin:7px 0;padding-left:18px;color:#cdddee;font-size:13px}.miniList li{margin:6px 0}.note{color:#c2d2e3;font-size:12px;padding:9px 0;border-bottom:1px solid #39516b}.hpbar{background:#08162c;border-radius:20px;overflow:hidden;height:9px;margin-top:8px}.hpbar span{background:linear-gradient(90deg,#dc5a7b,#ffa576);display:block;height:100%;transition:width .3s}.modal{position:fixed;inset:0;background:#030817cf;z-index:5;display:grid;place-items:center;padding:14px}.modal[hidden],[hidden]{display:none!important}.modalContent{width:min(640px,100%);max-height:89dvh;overflow:auto}.topToast{position:fixed;z-index:10;top:15px;left:50%;transform:translateX(-50%);background:#ffda8f;color:#292319;font-weight:900;padding:11px 16px;border-radius:12px;box-shadow:0 10px 30px #0008;text-align:center;max-width:95vw}.topToast[hidden]{display:none}.credits{text-align:center;margin-top:16px;color:var(--muted);font-size:11px}.roles{color:var(--muted);font-size:12px}.victory{color:var(--gold);text-align:center;font-size:32px}.end{background:linear-gradient(145deg,#27474c,#16253e);padding:18px;border-radius:15px;border:1px solid #8cbb9c}.mainButton{display:block;width:100%;text-align:center;margin-top:12px}.mobileOnly{display:none}details>summary{cursor:pointer;font-weight:bold;padding:6px 0;color:#eac99b}details>summary::marker{color:var(--gold)}@media(max-width:850px){.columns{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.mobileOnly{display:block}.sceneArt{height:145px}.heroChoose{grid-template-columns:1fr 1fr 1fr}.heroChoice{padding:8px}.heroChoice b{font-size:12px}.heroChoice small{font-size:10px}.wrap{padding:11px 9px 30px}.panel{padding:12px}.sceneBox{min-height:0}.mapInner{height:735px}.gameSide{gap:9px}}@media(max-width:390px){.heroChoose{grid-template-columns:1fr}.heroChoice span{display:inline;font-size:24px}.heroChoice b{display:inline-block;margin-left:8px}.stat strong{font-size:17px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="rainsky" aria-hidden="true"></div><div id="toast" class="topToast" hidden></div>
+<div class="wrap">
+<header class="header"><div class="mark"><span class="sigil">🌩️</span><div><div class="brand">Záporváros</div><div class="eyebrow">Az első pecsét · 1. fejezet / 6</div></div></div><div class="headerbuttons"><button id="helpBtn" type="button">📖 Segédlet</button><button id="resetBtn" type="button" hidden>↺ Új játék</button></div></header>
+<section id="startScreen" class="panel cover">
+<div class="heroArt"></div><div class="eyebrow" style="margin-top:19px">Egy új kezdet · Egyjátékos kaland</div><h1>A törött vízkapu</h1>
+<p class="muted">Záporváros első pecsétje megrepedt. A víz elárasztotta az alsó negyedet, az őrség eltűnt, a városban pedig valaki szándékosan nyitotta meg a zsilipeket. A döntéseidre emlékezni fognak.</p>
+<p class="info">Nem 120 kötelező kockadobás vár rád. Választható útvonalak, valódi harcok, csapdák, tárgyak, rejtélyek és egy 20 szobás titkos kazamata. Ez az első fejezet önálló prototípusa.</p>
+<label class="label" for="heroName">A hősöd neve</label><input id="heroName" class="nameInput" maxlength="20" value="Kalandor" placeholder="Hős neve" autocomplete="off">
+<div class="label">Válassz karakterosztályt</div><div class="heroChoose">
+<label class="heroChoice"><input name="class" type="radio" value="guardian" checked><span>🛡️</span><b>Őrző</b><small>18 HP, erősebb védelem, kitartó harcos</small></label>
+<label class="heroChoice"><input name="class" type="radio" value="scout"><span>🏹</span><b>Felderítő</b><small>15 HP, gyakrabban kritikus találat, több arany</small></label>
+<label class="heroChoice"><input name="class" type="radio" value="mage"><span>🔮</span><b>Rúnamágus</b><small>13 HP, 8 mana, erős varázslatok</small></label>
+</div><div class="stack" style="margin-top:15px"><button id="newBtn" class="primary mainButton">⚔️ Új kaland indítása</button><button id="continueBtn" class="mainButton" hidden>💾 Mentett kaland folytatása</button></div>
+<p class="small">A mentés csak ebben a böngészőben, ezen a webcímen tárolódik. Az eredeti Záporváros mentését nem írjuk felül.</p>
+</section>
+<section id="gameScreen" hidden>
+<div class="row spread" style="margin:3px 0 9px"><div><div id="chapterTag" class="eyebrow">ELSŐ FEJEZET</div><div id="locationTag" class="muted" style="font-size:12px">Főtérkép</div></div><div class="row"><button id="packBtn">🎒 Táska</button><button id="journalBtn">📜 Napló</button></div></div>
+<div id="stats" class="stats"></div>
+<div class="columns">
+<main id="scenePanel" class="panel sceneBox" aria-live="polite"><div id="scene"></div></main>
+<div class="gameSide"><section class="panel"><div class="mapHead"><h3>🗺️ <span id="mapTitle">Az Alsó Negyed</span></h3><span id="exploredLabel" class="small">0 terület</span></div><p class="small" id="mapHint">Zölddel jelölt helyekre továbbindulhatsz. A térképet oldalra görgetheted.</p><div class="mapScroll" id="mapScroll"><div id="mapInner" class="mapInner"></div></div><div class="mapKey">🟡 Jelenlegi hely · 🟢 Bejárható · 🔹 Már látogatott · ⚫ Ismeretlen</div></section>
+<section class="panel"><div class="row spread"><h3>📜 Útinapló</h3><button id="logBtn" class="quiet" style="font-size:11px;min-height:32px">Küldetések</button></div><div id="logShort"></div></section></div>
+</div></section>
+<footer class="credits">Záporváros · Első fejezet, önálló prototípus · HTML + CSS + JavaScript · A kéttelefonos kampány külön változat marad</footer>
+</div>
+<div class="modal" id="overlay" hidden><div id="overlayContent" class="panel modalContent"></div></div>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const KEY='zaporvaros-rpg-chapter1-v1';
+const rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+const html=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ITEMS={
+'blade':{name:'Öreg őrkard',emoji:'🗡️',type:'weapon',power:2,desc:'Biztos, nehéz acél. +2 sebzés.',rarity:'Gyakori'},
+'bow':{name:'Ázott vadászív',emoji:'🏹',type:'weapon',power:2,desc:'+2 sebzés. Felderítőként még +1.',rarity:'Gyakori'},
+'wand':{name:'Fényrúnás bot',emoji:'🪄',type:'weapon',power:1,desc:'+1 sebzés, varázslatkor +2.',rarity:'Gyakori'},
+'oldcloak':{name:'Vászonköpeny',emoji:'🧥',type:'armor',power:1,desc:'-1 elszenvedett sebzés.',rarity:'Gyakori'},
+'stormblade':{name:'Villámfog',emoji:'⚡',type:'weapon',power:4,desc:'+4 sebzés, támadásoknál esély extra villámra.',rarity:'Ritka'},
+'wardarmor':{name:'Zsilipőr páncél',emoji:'🛡️',type:'armor',power:3,desc:'-3 elszenvedett sebzés.',rarity:'Ritka'},
+'shadowdagger':{name:'Ködvágó tőr',emoji:'🗡️',type:'weapon',power:3,desc:'+3 sebzés; felderítővel gyakori kritikus.',rarity:'Ritka'},
+'pearl':{name:'Mélység gyöngye',emoji:'🔮',type:'relic',power:0,desc:'A Vízszörny kevesebb élettel kezdi a harcot.',rarity:'Legendás'},
+'ledger':{name:'Ázott főkönyv',emoji:'📜',type:'quest',desc:'Bizonyíték arra, hogy ki nyitotta meg a zsilipet.',rarity:'Küldetés'},
+'signet':{name:'Őrségi pecsétgyűrű',emoji:'💍',type:'quest',desc:'Belépést ad a parancsnoki állásba.',rarity:'Küldetés'},
+'bronzekey':{name:'Bronzkulcs',emoji:'🗝️',type:'quest',desc:'A katakomba mélyén található zárakhoz.',rarity:'Küldetés'},
+'potion':{name:'Gyógyital',emoji:'🧪',type:'consumable',desc:'+7 életerő.',rarity:'Gyakori'},
+'manavial':{name:'Rúnaesszencia',emoji:'🔵',type:'consumable',desc:'+4 mana.',rarity:'Gyakori'},
+'bomb':{name:'Szikrabomba',emoji:'💣',type:'consumable',desc:'Harcban 8 sebzést okoz.',rarity:'Nem gyakori'},
+'amulet':{name:'Repedt amulett',emoji:'🧿',type:'relic',desc:'Az első csapdát teljesen kivédi.',rarity:'Nem gyakori'}
+};
+const HEROES={guardian:{name:'Őrző',emoji:'🛡️',hp:18,mana:5,gold:8,weapon:'blade',armor:'oldcloak'},scout:{name:'Felderítő',emoji:'🏹',hp:15,mana:5,gold:12,weapon:'bow',armor:'oldcloak'},mage:{name:'Rúnamágus',emoji:'🔮',hp:13,mana:8,gold:9,weapon:'wand',armor:'oldcloak'}};
+// A régió kétirányú bejárt útvonalakat enged, új helyeket csak a nyíl irányában.
+const MAIN=[
+{id:'m0',name:'Külső kapu',icon:'🏰',x:288,y:24,next:['m1','m2']},
+{id:'m1',name:'Őrromok',icon:'🪖',x:118,y:106,next:['m3','m4']},
+{id:'m2',name:'Ázott piac',icon:'🛒',x:467,y:106,next:['m5','m6']},
+{id:'m3',name:'Törött híd',icon:'🌉',x:31,y:191,next:['m7','m8']},
+{id:'m4',name:'Csatornaakna',icon:'🌀',x:201,y:191,next:['m9']},
+{id:'m5',name:'Vándorkovács',icon:'⚒️',x:381,y:191,next:['m10']},
+{id:'m6',name:'Régi könyvtár',icon:'📚',x:553,y:191,next:['m11']},
+{id:'m7',name:'Őrposzt',icon:'🕯️',x:21,y:277,next:['m12']},
+{id:'m8',name:'Vízszentély',icon:'⛲',x:126,y:277,next:['m12']},
+{id:'m9',name:'A repedés',icon:'🕳️',x:244,y:277,next:['m13']},
+{id:'m10',name:'Suttogó sikátor',icon:'🦊',x:374,y:277,next:['m13']},
+{id:'m11',name:'Elfeledett iratok',icon:'📖',x:533,y:277,next:['m14']},
+{id:'m12',name:'Elara menedéke',icon:'🕯️',x:88,y:377,next:['m15']},
+{id:'m13',name:'Óratér',icon:'🕰️',x:291,y:377,next:['m15']},
+{id:'m14',name:'Régi vízóra',icon:'⌛',x:493,y:377,next:['m15']},
+{id:'m15',name:'Nagy zsilip',icon:'🌊',x:293,y:486,next:['m16']},
+{id:'m16',name:'Parancsnoki terem',icon:'📯',x:293,y:563,next:['m17']},
+{id:'m17',name:'Árvízi szív',icon:'🐉',x:293,y:644,next:['m18']},
+{id:'m18',name:'Pecsét csarnoka',icon:'💠',x:476,y:644,next:[]}
+];
+const DUNGEON=[
+{id:'d0',name:'Szakadt bejárat',icon:'🌀',x:290,y:16,next:['d1','d2']},
+{id:'d1',name:'Tüskealagút',icon:'🪤',x:122,y:87,next:['d3','d4']},
+{id:'d2',name:'Árnyak terme',icon:'👁️',x:458,y:87,next:['d4','d5']},
+{id:'d3',name:'Börtöncella',icon:'🔒',x:34,y:162,next:['d6']},
+{id:'d4',name:'Rúnaajtó',icon:'🧩',x:289,y:162,next:['d6','d7']},
+{id:'d5',name:'Elhagyott étkező',icon:'🍖',x:544,y:162,next:['d7']},
+{id:'d6',name:'Rozsdás páncél',icon:'🛡️',x:114,y:239,next:['d8','d9']},
+{id:'d7',name:'Villámgödör',icon:'⚡',x:464,y:239,next:['d9','d10']},
+{id:'d8',name:'Zárt kincstár',icon:'💎',x:20,y:316,next:['d11']},
+{id:'d9',name:'Három szobor',icon:'🗿',x:282,y:316,next:['d11','d12']},
+{id:'d10',name:'Fekete medence',icon:'🖤',x:550,y:316,next:['d12']},
+{id:'d11',name:'Őrök folyosója',icon:'⚔️',x:130,y:391,next:['d13','d14']},
+{id:'d12',name:'Visszhangkamra',icon:'🔔',x:437,y:391,next:['d14','d15']},
+{id:'d13',name:'Lakatmester',icon:'🗝️',x:35,y:465,next:['d16']},
+{id:'d14',name:'Ősi oltár',icon:'🕯️',x:280,y:465,next:['d16','d17']},
+{id:'d15',name:'Mérgező kert',icon:'🍄',x:540,y:465,next:['d17']},
+{id:'d16',name:'Törött fegyvertár',icon:'🗡️',x:124,y:541,next:['d18']},
+{id:'d17',name:'Elveszett katona',icon:'🧟',x:459,y:541,next:['d18']},
+{id:'d18',name:'Végső zsilip',icon:'🚪',x:290,y:609,next:['d19']},
+{id:'d19',name:'A Mélység Őre',icon:'👹',x:290,y:667,next:[]}
+];
+const NODES=Object.fromEntries([...MAIN,...DUNGEON].map(n=>[n.id,n]));
+const ENEMIES={
+rat:{name:'Árvízi patkányfalka',emoji:'🐀',hp:9,atk:2,gold:4,xp:3},
+watcher:{name:'Elázott őr árnya',emoji:'👻',hp:13,atk:3,gold:6,xp:4},
+feral:{name:'Csatornaszökevény',emoji:'🦎',hp:14,atk:3,gold:7,xp:5},
+warden:{name:'A Mélység Őre',emoji:'👹',hp:34,atk:4,gold:18,xp:12,boss:true},
+flood:{name:'A Megrepedt Szív',emoji:'🐉',hp:46,atk:5,gold:22,xp:20,boss:true}
+};
+let S=null,activeModal=null;
+function newState(name,hero){const h=HEROES[hero];return{version:1,name:name||'Kalandor',hero,zone:'main',current:'m0',stage:'scene',done:{},visited:{m0:true},flags:{},hp:h.hp,maxHp:h.hp,mana:h.mana,maxMana:h.mana,gold:h.gold,hope:1,storm:0,level:1,xp:0,items:[h.weapon,h.armor,'potion','manavial'],equip:{weapon:h.weapon,armor:h.armor},returnTo:null,battle:null,puzzle:null,shop:false,logs:['A város kapujában megkezdődött a nyomozás.'],ending:null};}
+function save(){if(!S)return;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('Nem sikerült menteni. A böngésző tárhelye megtelt.')}}
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&x.version===1&&NODES[x.current]&&HEROES[x.hero])return x}catch(e){}return null;}
+function journal(msg){S.logs.unshift(msg);S.logs=S.logs.slice(0,70)}
+function toast(msg){const box=$('toast');box.textContent=msg;box.hidden=false;clearTimeout(toast.timer);toast.timer=setTimeout(()=>box.hidden=true,2500)}
+function getItem(id){return ITEMS[id]||{name:'Ismeretlen tárgy',emoji:'❔',type:'quest',desc:''}}
+function has(id){return S.items.includes(id)}
+function give(id){if(ITEMS[id]){S.items.push(id);journal('🎒 Megszerezted: '+ITEMS[id].name);toast('🎒 '+ITEMS[id].name)}}
+function take(id){let i=S.items.indexOf(id);if(i>=0){S.items.splice(i,1);return true}return false}
+function effect(e={}){for(let k of ['hp','mana','gold','hope','storm','xp'])if(Number.isFinite(e[k])){S[k]+=e[k]}
+ S.hp=clamp(S.hp,1,S.maxHp);S.mana=clamp(S.mana,0,S.maxMana);S.gold=Math.max(0,S.gold);S.hope=clamp(S.hope,-5,15);S.storm=clamp(S.storm,0,15);
+ if(S.storm>=10){S.storm=6;S.hp=Math.max(1,S.hp-3);journal('⚡ Viharcsapás: -3 HP, a viharszint 6-ra csökkent.');toast('🌩️ Viharcsapás: -3 HP')}
+ while(S.xp>=S.level*10){S.xp-=S.level*10;S.level++;S.maxHp+=3;S.maxMana++;S.hp=S.maxHp;S.mana=S.maxMana;journal('✨ Szintlépés! Most '+S.level+'. szintű vagy.');toast('✨ Szintlépés!')}
+}
+function trap(damage){if(has('amulet')&&!S.flags.amuletUsed){S.flags.amuletUsed=true;journal('🧿 Az amuletted semlegesített egy csapdát.');toast('🧿 Csapda kivédve!');return}const defense=ITEMS[S.equip.armor]?.power||0;let hit=Math.max(1,damage-Math.floor(defense/2));S.hp=Math.max(1,S.hp-hit);journal('🪤 Csapda: -'+hit+' HP.');toast('🪤 -'+hit+' HP')}
+function moveChoices(){const node=NODES[S.current],all=S.zone==='main'?MAIN:DUNGEON;let moves=[...node.next];for(let n of all)if(n.next.includes(S.current)&&S.visited[n.id]&&!moves.includes(n.id))moves.push(n.id);return moves.filter(id=>id!=='m18'||S.flags.bossDead).map(id=>NODES[id]);}
+function go(id){if(!S||S.stage!=='free'||!moveChoices().some(n=>n.id===id))return;S.current=id;S.visited[id]=true;S.stage=S.done[id]?'free':'scene';journal('🗺️ '+NODES[id].name+' felfedezve');save();render();$('scenePanel').scrollIntoView({behavior:'smooth',block:'start'})}
+function enterDungeon(){S.returnTo=S.current;S.zone='dungeon';S.current='d0';S.visited.d0=true;S.stage=S.done.d0?'free':'scene';journal('🌀 A repedés beszippantott! Nincs visszaút, amíg az Őrt le nem győzöd.');toast('🌀 A kijárat lezárult!');save();render()}
+function exitDungeon(){S.flags.dungeonDone=true;S.zone='main';S.current=S.returnTo||'m9';S.stage='free';S.returnTo=null;effect({hope:2,xp:8});give('pearl');journal('🏆 Kijutottál a Kísértetkazamatából. A gyöngy veled marad.');save();render()}
+function applyChoice(c){if(!S||S.stage!=='scene')return;if(c.requires&&!c.requires(S)){toast(c.no||'Ez most nem lehetséges.');return}
+ S.done[S.current]=true;
+ if(c.flags)for(let flag of c.flags)S.flags[flag]=true;
+ if(c.effects)effect(c.effects);
+ if(c.item)give(c.item);
+ if(c.flags?.includes('mushroomHarvest'))give('potion');
+ if(c.log)journal(c.log);
+ if(c.portal){enterDungeon();return}
+ if(c.battle){startBattle(c.battle);return}
+ if(c.puzzle){S.stage='puzzle';S.puzzle={id:c.puzzle};save();render();return}
+ if(c.shop){S.stage='shop';save();render();return}
+ if(c.end){S.stage='ending';S.ending=calculateEnding();save();render();return}
+ S.stage='free';save();render();}
+// A statikus jelenetek valódi elágazásokat, tárgyakat és későbbi következményeket tartalmaznak.
+const SCENES={
+m0:{icon:'🏰',title:'Az őr nélkül maradt kapu',text:'A vihartól recseg a vasrács. Két út nyílik előtted: balra az eltűnt őrök után kutathatsz, jobbra a piacról hallatszik kiáltás. A földön egy sebesült futár ül, kezében vérfoltos levél.',choices:[{label:'🕊️ Ellátom a futárt',sub:'+1 remény, +1 gyógyital',effects:{hope:1},item:'potion',flags:['helpedCourier'],log:'A futár hálásan a régi őrposzt felé mutat.'},{label:'📜 Elveszem az üzenetét',sub:'+5 arany, +1 vihar',effects:{gold:5,storm:1},flags:['stoleLetter'],log:'A levelet megszerezted, de a futár átkot szór utánad.'}]},
+m1:{icon:'🪖',title:'Az eltűnt őrség',text:'Az üres laktanyában egyetlen sisak leng a kampón. Az asztalon vízáztatta parancs hever: „A zsiliphez senkit ne engedjetek. Fentebb parancsolták.” A szomszéd szobából fémcsörrenés hallatszik.',choices:[{label:'🔍 Átkutatom a parancsnoki íróasztalt',sub:'Megtalálhatod a pecsétgyűrűt',item:'signet',flags:['guardClue'],effects:{xp:2},log:'Őrségi pecsétgyűrű: később bizonyítékként szolgálhat.'},{label:'⚔️ Szembenézek a zaj forrásával',sub:'Harc és jutalom',battle:'watcher',flags:['guardClue'],log:'Az őr árnyát a saját kardod fogadja.'}]},
+m2:{icon:'🛒',title:'A piac utolsó lámpása',text:'A vízben úszó standok mellett egy idős árus kapaszkodik a pultjába. A kasszáját menti, miközben a hátsó raktárból gyermekhangok szűrődnek ki.',choices:[{label:'🤝 Segítek kimenteni a bezártakat',sub:'+2 remény; későbbi szövetséges',effects:{hope:2,xp:2},flags:['savedMarket'],item:'potion',log:'A piac lakói ezután a nevedet suttogják.'},{label:'💰 Kimentem az elázott kasszát',sub:'+10 arany, +2 vihar',effects:{gold:10,storm:2},flags:['lootedMarket'],log:'A pénzcsörgés elnyomja a segélykiáltásokat.'}]},
+m3:{icon:'🌉',title:'A hídról lógó kötél',text:'A híd kettétört. A mélyben fuldokló vízforgatag, középen egy katona kapaszkodik a láncba. A híd mögött gyorsabb, de veszélyes ösvény vezet.',choices:[{label:'🪢 Kimentem a katonát',sub:'Kockázatos mentés: -2 HP, +2 remény',effects:{hp:-2,hope:2,xp:3},flags:['savedSoldier'],log:'A katona elárulja: a vízkapu nem magától nyílt meg.'},{label:'🏃 Átugrom a leszakadt részt',sub:'Csapda: sérülés, de zsákmány',effects:{storm:1,gold:6},flags:['jumpedBridge'],log:'Sikerült átérned, de az ódon kötél megvágott.' ,trap:2}]},
+m4:{icon:'🌀',title:'A csatorna mélyén',text:'Egy vaslétra alatt kékesen izzó hasadék nyílik. A falra karcolt üzenet így szól: „Húsz szoba. Egyetlen kijárat. Csak a Mélység Őre enged tovább.” A túloldalon fényes ereklye villan.',choices:[{label:'🌀 Belépek a titkos kazamatába',sub:'20 szobás külön pálya, kijutás csak az Őr után',portal:true,requires:s=>!s.flags.dungeonDone,no:'Ezt a kazamatát már teljesítetted.',flags:['enteredDungeon']},{label:'🚶 Egyelőre elkerülöm a hasadékot',sub:'A kazamatába később visszatérhetsz',flags:['skippedDungeon'],effects:{hope:0}}]},
+m5:{icon:'⚒️',title:'A kovács utolsó parazsa',text:'A kovács az áradástól is védi a tüzét. Felszereléseket kínál, de egy szívességet is kérne: a nővére a piac másik oldalán rekedt.',choices:[{label:'🛒 Megnézem a kovács áruit',sub:'Fegyver, páncél, italok',shop:true,flags:['metSmith']},{label:'🤝 Hírt adok a túlélőkről',sub:'A megmentett piaciak számítanak',requires:s=>!!s.flags.savedMarket,no:'Előbb segítened kell a piaci túlélőkön.',effects:{hope:1,gold:5},item:'bomb',flags:['smithAlly'],log:'A kovács könnyes szemmel egy szikrabombát ad.'},{label:'🚶 Továbbindulok',sub:'A kovács később is itt lesz',flags:['metSmith']}]},
+m6:{icon:'📚',title:'A könyvtár, ahol a víz felfelé folyik',text:'A könyvek közül suttogás hallatszik. Egy térkép azt állítja, hogy az áradást egyetlen ember indította el. A gyűrött kézirat szerint a kapu három pecséttel nyitható.',choices:[{label:'🧩 Megfejtem a könyvtár rúnasorát',sub:'Önálló logikai rejtvény',puzzle:'library'},{label:'🔥 Elégetem a fertőzött iratokat',sub:'-1 vihar, de elveszik egy nyom',effects:{storm:-1,hope:-1},flags:['burnedBooks'],log:'A füst elrejti a múltat.'}]},
+m7:{icon:'🕯️',title:'Névtelen őrposzt',text:'Egy bereteszelt ajtó mögül valaki kopog. Három ütés, szünet, kettő. A zár túloldalán egy csapda kattog, az asztalon kulcs nélküli fiók.',choices:[{label:'🔍 Óvatosan felnyitom a zárat',sub:'Esély egy ritka felszerelésre',item:'wardarmor',effects:{xp:3},flags:['foundArmor']},{label:'🚪 Berúgom az ajtót',sub:'-3 HP, +8 arany',effects:{hp:-3,gold:8},flags:['brokeDoor'],log:'A csapda megsebzett, de a rejtett pénz hozzád került.'}]},
+m8:{icon:'⛲',title:'A megfakult vízszentély',text:'A szobor szemeiből tiszta víz folyik a sós áradatba. Egy tábla áll a kő előtt: „Amiért adsz, azért kaphatsz.” A medencében valami csillan.',choices:[{label:'🕊️ Felajánlok 4 aranyat',sub:'Teljes gyógyulás, +1 remény',requires:s=>s.gold>=4,no:'Nincs elég aranyad.',effects:{gold:-4,hope:1,hp:99,mana:99},flags:['sanctuaryBlessing']},{label:'💎 Kiveszem a csillogó tárgyat',sub:'Amulett, +2 vihar',item:'amulet',effects:{storm:2},flags:['stoleShrine']}]},
+m9:{icon:'🕳️',title:'A repedés pereme',text:'A lábad alatt mozog a kőzet. A kék örvény ugyanabba a kazamatába vezet, amelyről az őrök suttogtak. Odabentről halk nevetés és fegyverek csengése hallatszik.',choices:[{label:'🌀 Beugrom a hasadékba',sub:'Nincs visszaút a kazamata vége előtt',portal:true,requires:s=>!s.flags.dungeonDone,no:'Ezt a kazamatát már teljesítetted.',flags:['enteredDungeon']},{label:'🏃 Kikerülöm a repedést',sub:'Biztonságos folytatás',effects:{storm:-1},flags:['avoidedRift']}]},
+m10:{icon:'🦊',title:'A suttogó sikátor',text:'Egy köpenyes alak ajánlatot tesz: „Elárulom, ki nyitotta meg a zsilipeket. Kérek érte hat aranyat. Vagy megpróbálhatod kitalálni magad.” A kezében egy töredezett irat van.',choices:[{label:'💰 Megveszem a bizonyítékot',sub:'6 aranyért kulcsfontosságú nyom',requires:s=>s.gold>=6,no:'Nincs hat aranyad.',effects:{gold:-6,xp:3},item:'ledger',flags:['foundLedger']},{label:'🎭 Hazugsággal próbálom megszerezni',sub:'+1 vihar, külön veszély',effects:{storm:1,gold:3},flags:['angeredSpy'],battle:'feral'}]},
+m11:{icon:'📖',title:'A város elfeledett iratai',text:'Egy nyitott napló utolsó sora: „A zsilipet E. megbízott nyittatta, miután a Tanács megtagadta az evakuálást.” A tinta alól a teljes név kikaparható.',choices:[{label:'🔍 Gondosan helyreállítom a naplót',sub:'Bizonyíték, +3 tapasztalat',item:'ledger',effects:{xp:3,hope:1},flags:['foundLedger']},{label:'🕯️ Inkább eltüntetem a neveket',sub:'+6 arany, +2 vihar',effects:{gold:6,storm:2},flags:['hidTruth']}]},
+m12:{icon:'🕯️',title:'Elara menedéke',text:'Elara, a fiatal őrségvezető a sebesülteket ápolja. Megmutatod neki, amit eddig megtudtál. A fal mellett két őr hallgatja a beszélgetést.',choices:[{label:'🤝 Bízom Elarában',sub:'A főellenségnél később segítséget kaphatsz',effects:{hope:2,xp:2},flags:['elaraAlly'],log:'Elara megígéri, hogy a vízkapunál ismét találkoztok.'},{label:'🗡️ Fegyvert követelek',sub:'Fegyver, de Elara bizalma elvész',item:'shadowdagger',effects:{hope:-2,storm:1},flags:['threatenedElara']}]},
+m13:{icon:'🕰️',title:'A megállt óratorony alatt',text:'A város órája pontosan 03:14-kor állt meg. Az óraszerkezet mögött csapóajtó, rajta három számjegyes tárcsa. A jegyzet ezt mondja: „Az idő a kulcs.”',choices:[{label:'🔢 Megpróbálom a zárkódot',sub:'Interaktív kódfejtés',puzzle:'clock'},{label:'🔨 Feltöröm az óraszerkezetet',sub:'Biztos zsákmány, de vihar keletkezik',effects:{gold:4,storm:2},item:'manavial',flags:['brokeClock']}]},
+m14:{icon:'⌛',title:'A régi vízóra',text:'A torony mélyén egy óriási homokóra méri a vízszintet. A válaszodtól függően lelassíthatod vagy felgyorsíthatod az áradást. Csak az egyik kamra marad szárazon.',choices:[{label:'⏳ Leállítom a szerkezetet',sub:'-2 vihar; később könnyebb harc',effects:{storm:-2,xp:4},flags:['waterClockStopped']},{label:'💰 Kimentem az arany alkatrészeket',sub:'+12 arany, +2 vihar',effects:{gold:12,storm:2},flags:['waterClockLooted']}]},
+m15:{icon:'🌊',title:'A Nagy Zsilip döntése',text:'Az egész város vízszintje a kapcsolók mögött feszül. Ha mindent lezársz, a szegénynegyedből is elvágod a menekülő utat. Ha óvatosan engeded át a vizet, a szörny erőre kaphat.',choices:[{label:'🕊️ A lakosságot védem',sub:'+3 remény, a szörny valamivel erősebb',effects:{hope:3,storm:1},flags:['gateSavedPeople']},{label:'⚙️ Azonnal lezárom a zsilipeket',sub:'Könnyebb boss, de -2 remény',effects:{hope:-2,storm:-1},flags:['gateSealed']},{label:'🔍 Megkeresem a harmadik megoldást',sub:'Csak iratokkal vagy pecsétgyűrűvel',requires:s=>has('ledger')||has('signet'),no:'Ehhez bizonyítékot kell keresned a könyvtárban, az őrségnél vagy a levéltárban.',effects:{hope:3,storm:-2,xp:5},flags:['gateBalanced'],log:'A felfedezett vészcsatorna egyszerre menti a várost és gyengíti a szörnyet.'}]},
+m16:{icon:'📯',title:'A parancsnoki szoba',text:'A falon egyetlen üzenet: „A vihar szívét az első pecsét tartja életben.” Elara itt várhat rád, ha megbíztál benne. Egy ládában fegyvereket találsz, de az utolsó rohammal már nem lehet visszafordítani az időt.',choices:[{label:'🛡️ Felkészülök a harcra',sub:'+5 HP és +3 mana, tovább a főellenséghez',effects:{hp:5,mana:3},flags:['prepared']},{label:'⚔️ Kinyitom a fegyverládát',sub:'Erős fegyver, +1 vihar',item:'stormblade',effects:{storm:1},flags:['armedForBoss']}]},
+m17:{icon:'🐉',title:'A Megrepedt Szív',text:'A vízből óriási, pikkelyes alak emelkedik ki. Testén a város első pecsétjének darabjai izzanak. A lény egyszerre őrzi és pusztítja a várost. Csak harccal juthatsz a csarnokba.',choices:[{label:'⚔️ Megküzdök a Vihar Szívével',sub:'Többfázisú főellenségharc',battle:'flood'}]},
+m18:{icon:'💠',title:'Az első pecsét titka',text:'A szörny elcsendesült. A pecsét újra összeáll, de a város fölött még öt viharörvény kavarog. Most látszik meg igazán, milyen következménye lett a döntéseidnek.',choices:[{label:'✨ Lezárom az első fejezetet',sub:'A befejezés a korábbi tetteidtől függ',end:true}]},
+// Kazamata – húsz névvel és külön eseményekkel, elágazó bejárási útvonalakkal.
+d0:{icon:'🌀',title:'A kijárat eltűnt',text:'A portál összeomlik mögötted. Húsz különös terem alkotja a kazamatát; a folyosók elágaznak, de a felszíni kijárat zárva. A falra írva: „A Mélység Őre őrzi a szabadságot.”',choices:[{label:'🕯️ Meggyújtom a falon függő fáklyát',sub:'+1 remény és 2 arany',effects:{hope:1,gold:2},flags:['dungeonLight']},{label:'⚔️ Előrántom a fegyvert',sub:'+1 mana, +1 vihar',effects:{mana:1,storm:1}}]},
+d1:{icon:'🪤',title:'A tüskék között',text:'Két fal lassan egymás felé mozdul, a padlón régi csontok hevernek. Az egyik oldalon egy elveszett hátizsákot látsz.',choices:[{label:'🏃 Átfutok a résen',sub:'-2 HP',effects:{hp:-2,xp:2}},{label:'🎒 Felkapom a hátizsákot',sub:'-4 HP, +9 arany',effects:{hp:-4,gold:9}}]},
+d2:{icon:'👁️',title:'Az árnyak első kérdése',text:'A mennyezetről lefelé lógó szem nem pislog. „Ki vagy? Aki elvesz, vagy aki megment?” A válaszodra a sötétség egy része fellobban.',choices:[{label:'🕊️ Még mindig a túlélőket keresem',sub:'+2 remény',effects:{hope:2},flags:['truthfulShade']},{label:'🌩️ Azt veszem el, ami jár',sub:'+7 arany, +1 vihar',effects:{gold:7,storm:1}}]},
+d3:{icon:'🔒',title:'A nedves börtöncella',text:'Egy rozsdás zár mögött névtelen fogoly vár. Kulcsod nincs, de a zárban repedés fut. A fogoly szerint valaki odalent fegyvereket rejteget.',choices:[{label:'🔓 Kiszabadítom a foglyot',sub:'-2 HP, +2 remény, segítség a végén',effects:{hp:-2,hope:2},flags:['savedPrisoner']},{label:'🪙 Átkutatom az őr zsebét',sub:'+6 arany',effects:{gold:6}}]},
+d4:{icon:'🧩',title:'A három rúna ajtaja',text:'A kapun három jel látható: víz, láng, kő. Alatta: „Először ami folyik, aztán ami világít, végül ami megmarad.”',choices:[{label:'🧩 Megoldom a rúnafejtörőt',sub:'Külön rejtvény, jutalommal',puzzle:'runes'},{label:'🪓 Feltöröm a kőajtót',sub:'-3 HP, kapok 2 aranyat',effects:{hp:-3,gold:2}}]},
+d5:{icon:'🍖',title:'Az utolsó lakoma',text:'A hosszú asztalon friss étel gőzölög. Az üres székeken rég elhunyt katonák névtáblái. A távolban halk kórus zeng.',choices:[{label:'🍲 Eszem a lakomából',sub:'+5 HP, +1 vihar',effects:{hp:5,storm:1}},{label:'🧪 Nem nyúlok a csábító ételhez',sub:'+1 remény és gyógyital',effects:{hope:1},item:'potion'}]},
+d6:{icon:'🛡️',title:'A rozsdás páncél esküje',text:'Egy üres páncél térdre rogy előtted. A pajzsa mögött különös, ezüstszínű jel ragyog.',choices:[{label:'🛡️ Magamhoz veszem a páncélt',sub:'Zsilipőr páncél',item:'wardarmor',effects:{xp:2}},{label:'🧎 Békében hagyom a halott katonát',sub:'+2 remény és +2 mana',effects:{hope:2,mana:2}}]},
+d7:{icon:'⚡',title:'Villámgödör',text:'A padlón kisülések kergetik egymást. Köztük egy sisak és egy erszény hever. Csak az egyiket érheted el.',choices:[{label:'🧲 Megszerzem a sisak alatt lévő tárgyat',sub:'Ritka tőr, -3 HP',item:'shadowdagger',effects:{hp:-3}},{label:'🪙 Az erszényért nyúlok',sub:'+12 arany, +2 vihar',effects:{gold:12,storm:2}}]},
+d8:{icon:'💎',title:'A zárt kincstár',text:'Három láda: egy aranyszínű, egy ezüst, egy fekete. A fekete láda alatt pattogó szikrák. Egyet nyithatsz fel.',choices:[{label:'🥇 Aranyláda',sub:'+13 arany, -2 HP',effects:{gold:13,hp:-2}},{label:'🥈 Ezüstláda',sub:'Gyógyital és mana',item:'potion',effects:{mana:3}},{label:'⬛ Fekete láda',sub:'Ritka fegyver, +2 vihar',item:'stormblade',effects:{storm:2}}]},
+d9:{icon:'🗿',title:'Három ősi szobor',text:'Az első a látást, a második a türelmet, a harmadik az erőt dicséri. Egyetlen érintés felébreszti a terem elfeledett próbáját.',choices:[{label:'👁️ A látás szobrát érintem',sub:'Rejtvény indul',puzzle:'statues'},{label:'💪 Az erő szobrát érintem',sub:'Harc kezdődik',battle:'watcher'},{label:'🕊️ A türelem szobrát érintem',sub:'+2 remény, +3 HP',effects:{hope:2,hp:3}}]},
+d10:{icon:'🖤',title:'A fekete medence',text:'A medence nem a te arcodat tükrözi, hanem egy sokkal öregebb hőst. Felajánl neked egy cserét: holnapi erőért mai áldozatot.',choices:[{label:'🩸 Vérrel fizetek',sub:'-3 HP, +6 XP',effects:{hp:-3,xp:6}},{label:'🔮 Manával fizetek',sub:'-2 mana, +10 arany',requires:s=>s.mana>=2,no:'Kevés a manád.',effects:{mana:-2,gold:10}},{label:'🚶 Elfordulok',sub:'-1 vihar',effects:{storm:-1}}]},
+d11:{icon:'⚔️',title:'Az őrök folyosója',text:'Két kőharcos válik le a falról. Az egyik mögött fénylő kincseszsák, a másik mögött veszélyes átkelés.',choices:[{label:'⚔️ Megküzdök az őrökkel',sub:'Kötelező harc a jutalomért',battle:'watcher'},{label:'🏃 Átcsúszom az őrök alatt',sub:'-4 HP, +2 XP',effects:{hp:-4,xp:2}}]},
+d12:{icon:'🔔',title:'A visszhangkamra',text:'A teremben minden szó kétszer hangzik el. Egy hang a valódi nevedet mondja, a másik alkut ajánl. A kőfalon egy szív és egy szikra jele.',choices:[{label:'❤️ A saját nevemet mondom',sub:'+3 HP, +1 remény',effects:{hp:3,hope:1}},{label:'⚡ Az ajánlatot fogadom el',sub:'+4 mana, +2 vihar',effects:{mana:4,storm:2}}]},
+d13:{icon:'🗝️',title:'A lakatmester',text:'Egy öreg szerkezetember nem kér aranyat a kulcsért. Egyetlen kérése van: ne felejtsd el, ki tette ezt a börtönt a föld alá.',choices:[{label:'🤝 Megígérem, hogy őrzöm a nevét',sub:'Bronzkulcs és +1 remény',item:'bronzekey',effects:{hope:1},flags:['makerPromise']},{label:'💰 Eladom az ígéretet',sub:'+13 arany',effects:{gold:13}}]},
+d14:{icon:'🕯️',title:'Az ősi oltár',text:'Az oltárra két tenyérlenyomatot véstek. Az egyik a megmentőknek, a másik a hódítóknak ad erőt. Egyetlen áldást kérhetsz.',choices:[{label:'🌿 A menedék áldását kérem',sub:'Teljes gyógyulás',effects:{hp:99,mana:99}},{label:'🔥 A harcos áldását kérem',sub:'+5 XP, +2 vihar',effects:{xp:5,storm:2}}]},
+d15:{icon:'🍄',title:'A mérgező kert',text:'A barlangban gombák énekelnek. A szökőkút melletti gyökérből gyógyító nedv csorog, de közelében méregfelhő gomolyog.',choices:[{label:'🧪 Megpróbálok gyógyító nedvet szerezni',sub:'Két gyógyital, -3 HP',item:'potion',effects:{hp:-3},flags:['mushroomHarvest']},{label:'🍄 Keresztülrohanok a kerten',sub:'-2 HP, +1 vihar',effects:{hp:-2,storm:1}}]},
+d16:{icon:'🗡️',title:'A törött fegyvertár',text:'A falon még két fegyver csillog. A harmadik helyén csak egy felirat: „A fegyver ereje a hordozójában rejlik.”',choices:[{label:'⚡ A villámkardot választom',sub:'Villámfog ritka fegyver',item:'stormblade'},{label:'🛡️ A páncélt választom',sub:'Zsilipőr páncél',item:'wardarmor'}]},
+d17:{icon:'🧟',title:'Az elveszett katona',text:'Egy páncélos alak a padlón ül és ránézésre él. „A mélyből senki nem jön vissza. Kivéve aki ismeri az Őr nevét.”',choices:[{label:'🕊️ Segítek felállnia',sub:'+2 remény, segítséget kapsz az Őr ellen',effects:{hope:2},flags:['dungeonCompanion']},{label:'🗡️ Elveszem a fegyverét',sub:'Ködvágó tőr és +1 vihar',item:'shadowdagger',effects:{storm:1}}]},
+d18:{icon:'🚪',title:'A végső zsilip',text:'A víz fölött egy utolsó kapu emelkedik. A köveken egy figyelmeztetés: „Ami odalent marad, az örökre a mélységé.” Még van időd gyógyulni.',choices:[{label:'🧪 Felkészülök az utolsó harcra',sub:'+6 HP, +3 mana',effects:{hp:6,mana:3}},{label:'🪙 Feltöröm az őrkasszát',sub:'+10 arany, +1 vihar',effects:{gold:10,storm:1}}]},
+d19:{icon:'👹',title:'A Mélység Őre',text:'Egy hatalmas, láncokból szőtt szörny áll az út végén. „Aki belépett, kijutni csak győztesen tud.” A kijárat mögötte dereng. Még ha el is esel, visszatérhetsz és újra próbálhatod.',choices:[{label:'⚔️ Legyőzöm a Mélység Őrét',sub:'Főellenség; kijutás és ritka ereklye',battle:'warden'}]}
+};
+function startBattle(id){const e=ENEMIES[id];if(!e)return;let hp=e.hp;
+ if(id==='flood'){if(S.flags.gateBalanced)hp-=12;else if(S.flags.gateSealed)hp-=8;else if(S.flags.gateSavedPeople)hp+=5;if(S.flags.waterClockStopped)hp-=5;if(has('pearl'))hp-=6;if(S.flags.elaraAlly)hp-=5}
+ if(id==='warden'){if(S.flags.dungeonCompanion)hp-=7;if(S.flags.savedPrisoner)hp-=5;if(has('bronzekey'))hp-=3}
+ hp=Math.max(12,hp);if(e.boss&&S.flags.bossWounds?.[id])hp=Math.min(hp,S.flags.bossWounds[id]);S.battle={id,hp,maxHp:hp,round:0,guard:0,intent:'A lény támadásra készül.',log:'⚔️ '+e.name+' felbukkant!'};S.stage='battle';save();render()}
+function battleMove(action){if(S.stage!=='battle'||!S.battle)return;let b=S.battle,e=ENEMIES[b.id],note='',dmg=0;
+ const weapon=ITEMS[S.equip.weapon];const armor=ITEMS[S.equip.armor];
+ if(action==='attack'){
+  dmg=rand(2,5)+(weapon?.power||0)+Math.floor((S.level-1)/2);
+  let crit= Math.random()<(S.hero==='scout'?.33:.16);
+  if(crit)dmg=Math.floor(dmg*1.7);
+  if(S.hero==='scout'&&S.equip.weapon==='bow')dmg++;
+  if(S.equip.weapon==='stormblade'&&Math.random()<.28)dmg+=3;
+  note='⚔️ '+(crit?'Kritikus találat! ':'')+dmg+' sebzés.';
+ }else if(action==='spell'){
+  if(S.mana<2){toast('Nincs elég mana!');return}
+  S.mana-=2;dmg=rand(5,9)+(S.hero==='mage'?3:0)+(S.equip.weapon==='wand'?2:0);note='🔮 Rúnavarázslat: '+dmg+' sebzés.';
+ }else if(action==='defend'){
+  b.guard=5;S.mana=Math.min(S.maxMana,S.mana+1);note='🛡️ Védekező állás, +1 mana.';
+ }else if(action==='potion'){
+  if(!take('potion')){toast('Nincs gyógyitalad!');return}S.hp=Math.min(S.maxHp,S.hp+7);note='🧪 +7 HP (legfeljebb a maximumig).';
+ }else if(action==='mana'){
+  if(!take('manavial')){toast('Nincs rúnaesszenciád!');return}S.mana=Math.min(S.maxMana,S.mana+4);note='🔵 +4 mana.';
+ }else if(action==='bomb'){
+  if(!take('bomb')){toast('Nincs szikrabombád!');return}dmg=8;note='💣 A bomba 8 sebzést okozott.';
+ }else if(action==='flee'){
+  if(e.boss){toast('Egy főellenség elől nem menekülhetsz!');return}
+  if(Math.random()<.6){journal('🏃 Megmenekültél '+e.name+' elől.');S.stage='free';S.battle=null;save();render();return}
+  note='🏃 Nem sikerült elmenekülnöd.';
+ }else return;
+ b.hp=Math.max(0,b.hp-dmg);b.round++;
+ if(b.hp<=0){
+   journal('🏆 Legyőzted: '+e.name);effect({gold:e.gold,xp:e.xp,hope:e.boss?1:0});
+   if(b.id==='flood'){S.flags.bossDead=true;S.flags.bossRound=b.round;}
+   if(b.id==='warden'){S.flags.wardenDead=true;}
+   const was=b.id;S.battle=null;S.stage='free';
+   if(was==='warden'){exitDungeon();return}
+   if(was==='flood')journal('💠 Az első pecsét összeállt. A csarnok most megnyílt.');
+   save();render();toast('🏆 Győzelem! +'+e.gold+' arany');return;
+ }
+ let raw=e.atk+rand(0,2);
+ if(e.boss&&b.round%3===0)raw+=4;
+ if(b.id==='flood'&&S.flags.elaraAlly)raw=Math.max(1,raw-1);
+ let dealt=Math.max(1,raw-(armor?.power||0)-b.guard);
+ b.guard=0;S.hp-=dealt;
+ b.intent=b.round%3===2?'⚠️ Következő körben erőteljes támadás várható!':'A lény újabb támadást készít elő.';
+ b.log=note+' '+e.name+' visszavágott: -'+dealt+' HP.';
+ journal(b.log);
+ if(S.hp<=0){const lost=Math.min(S.gold,5);S.gold-=lost;if(e.boss){S.flags.bossWounds=S.flags.bossWounds||{};S.flags.bossWounds[b.id]=Math.max(4,Math.min(b.hp+2,Math.floor(b.maxHp*.8)));}S.hp=S.maxHp;S.mana=S.maxMana;S.stage='scene';S.battle=null;delete S.done[S.current];journal('💔 Elestél, de a pecsét visszahúzott a csata elé. -'+lost+' arany. A főellenségen ejtett sebek megmaradnak.');toast('💔 Új esélyt kaptál!')}
+ save();render();
+}
+const PUZZLES={
+library:{title:'A könyvtár titkos logikája',question:'A három könyv közül az első mindig igazat mond, a második mindig hazudik. Az első szerint: „A harmadik könyv nem a kulcs.” A második szerint: „A harmadik a kulcs.” Melyik állítás következik ebből?',options:['A harmadik biztosan a kulcs','A harmadik nem a kulcs','Semmi nem dönthető el'],correct:1,reward:{xp:5,hope:1},item:'ledger'},
+runes:{title:'Az elemek sorrendje',question:'„Először ami folyik, aztán ami világít, végül ami megmarad.” Milyen sorrend nyitja az ajtót?',options:['🔥 Láng → 💧 Víz → 🪨 Kő','💧 Víz → 🔥 Láng → 🪨 Kő','🪨 Kő → 💧 Víz → 🔥 Láng'],correct:1,reward:{xp:4,mana:3},item:'bronzekey'},
+statues:{title:'A szobrok ígérete',question:'A látás szerint: „A kulcs a második szobornál van.” A türelem szerint: „A kulcs NEM a második szobornál van.” Az erő szerint: „A kulcs a harmadik szobornál van.” Pontosan KÉT szobor mond igazat. Hol van a kulcs?',options:['👁️ Az elsőnél','🧘 A másodiknál','💪 A harmadiknál'],correct:2,reward:{xp:5,hope:1},item:'amulet'},
+clock:{title:'A megállt óra zárja',question:'Az óraszerkezet 03:14-kor állt meg. A tárcsa háromjegyű kódot kér. Milyen számot írsz be?',code:'314',reward:{xp:5,gold:10},item:'potion'}
+};
+function finishPuzzle(answer){if(S.stage!=='puzzle'||!S.puzzle)return;const p=PUZZLES[S.puzzle.id];let good= p.code?String(answer).trim()===p.code:Number(answer)===p.correct;
+ if(good){effect(p.reward);if(p.item)give(p.item);journal('🧩 Megfejtetted: '+p.title);toast('✨ Rejtvény megoldva!')}
+ else{trap(2);effect({storm:1});journal('🧩 Hibás megfejtés: '+p.title+'. A járat így is átenged.');toast('🧩 Tévedtél! -2 HP, +1 vihar')}
+ S.stage='free';S.puzzle=null;save();render();}
+const SHOP=[{id:'potion',price:5},{id:'manavial',price:4},{id:'bomb',price:8},{id:'wardarmor',price:16},{id:'shadowdagger',price:18}];
+function buy(id){const price=SHOP.find(x=>x.id===id)?.price;if(S.stage!=='shop'||!price)return;if(S.gold<price){toast('Nincs elég aranyad.');return}S.gold-=price;give(id);journal('🛒 Vásároltál '+price+' aranyért.');save();render();}
+function calculateEnding(){if(S.flags.gateBalanced&&S.flags.elaraAlly&&S.hope>=5)return{icon:'🌅',title:'A hajnal első pecsétje',description:'Elara a megmentett családokkal vár. A zsilipet nyitva tartottátok, a várost mégis megmentettétek. A Tanács először kénytelen meghallgatni az igazságot. Az öt megmaradt pecsét története most kezdődik.'};
+ if(S.storm>=8||S.hope<=0)return{icon:'🌩️',title:'A győzelem ára',description:'A pecsét újra fénylik, de a víz mellett a félelem is megmarad. A túlélők suttogva emlegetik a neved. Az első szörny halott, és talán te lettél az új vihar.'};
+ if(S.flags.dungeonDone)return{icon:'🔮',title:'A mélység titka',description:'A gyöngy a zsebedben lassan felragyog. A Vihar Szíve fölött az öt következő pecsét képe jelenik meg. A kazamatában talált ereklye megváltoztatja a következő fejezetek lehetőségeit.'};
+ return{icon:'🌤️',title:'Törékeny csend',description:'A szörny eltűnt, de az alsó negyed sebei sokáig megmaradnak. A pecsétet megőrizted, a döntéseidnek pedig tanúi vannak. Öt vihar még hátravan.'};}
+function recoverScene(){if(S.stage==='scene')return true;return false}
+function renderStats(){const role=HEROES[S.hero];$('chapterTag').textContent=S.zone==='main'?'I. FEJEZET · ELÁRASZTOTT NEGYED':'TITKOS MELLÉKPÁLYA · 20 SZOBA';$('locationTag').textContent=role.emoji+' '+html(S.name)+' · '+role.name+' · '+S.level+'. szint · '+(S.zone==='main'?'Főtörténet':'Kijárat csak az Őr után');
+ const stats=[['❤️ HP',S.hp+'/'+S.maxHp,'hp'],['🔮 Mana',S.mana+'/'+S.maxMana,'mana'],['🪙 Arany',S.gold],['🕊️ Remény',S.hope],['🌩️ Vihar',S.storm],['⭐ Szint',S.level]];
+ $('stats').innerHTML=stats.map(([title,value,bar])=>`<div class="stat"><small>${title}</small><strong>${html(value)}</strong>${bar?`<div class="meter"><span style="width:${Math.max(0,Math.min(100,bar==='hp'?S.hp/S.maxHp*100:S.mana/S.maxMana*100))}%"></span></div>`:''}</div>`).join('');}
+function renderMap(){const all=S.zone==='main'?MAIN:DUNGEON, valid=S.stage==='free'?moveChoices().map(n=>n.id):[],lines=[];
+ for(const n of all)for(const id of n.next){let other=NODES[id],active=(n.id===S.current||id===S.current),show=S.visited[n.id]||S.visited[id];
+ lines.push(`<path d="M${n.x+48} ${n.y+58} Q${(n.x+other.x)/2+48} ${(n.y+other.y)/2+30} ${other.x+48} ${other.y+4}" fill="none" stroke="${active?'#e1bd72':show?'#548d8c':'#425770'}" stroke-width="${active?3:2}" opacity="${show?0.86:.34}" stroke-dasharray="${show?'0':'4 6'}"/>`)}
+ $('mapInner').innerHTML=`<svg aria-hidden="true" class="mapLines" viewBox="0 0 670 735" preserveAspectRatio="none">${lines.join('')}</svg>`+all.map(n=>{
+ let visited=!!S.visited[n.id],now=n.id===S.current,ok=valid.includes(n.id),future=now||visited||ok||all.some(prev=>S.visited[prev.id]&&prev.next.includes(n.id));
+ return `<button type="button" class="node ${now?'current':ok?'available':visited?'visited':future?'locked':'notseen'}" style="left:${n.x}px;top:${n.y}px" data-node="${n.id}" ${ok?'':'disabled'} title="${html(n.name)}"><span class="ni">${future?n.icon:'❔'}</span><span>${future?html(n.name):'Ismeretlen'}</span></button>`}).join('');
+ $('mapInner').querySelectorAll('[data-node]').forEach(n=>n.addEventListener('click',()=>go(n.dataset.node)));
+ $('mapTitle').textContent=S.zone==='main'?'Az Alsó Negyed':'A Kísértetkazamata';
+ $('exploredLabel').textContent=all.filter(n=>S.visited[n.id]).length+' / '+all.length+' helyszín';
+ const viewport=$('mapScroll');if(viewport.clientWidth)viewport.scrollLeft=Math.max(0,NODES[S.current].x+48-viewport.clientWidth/2);
+ $('mapHint').textContent=S.stage==='free'?'A zöld helyekre kattintva választhatsz útvonalat. A korábban bejárt helyekre visszatérhetsz.':'Előbb zárd le az aktuális eseményt vagy harcot. Utána szabadon választhatsz utat.';}
+function renderScene(){const place=NODES[S.current],rec=SCENES[S.current];let prefix=`<div class="sceneArt ${S.stage==='battle'?'battle':''}"><span class="ambient">✦</span><span class="art">${S.stage==='battle'?ENEMIES[S.battle.id].emoji:S.stage==='ending'?S.ending.icon:place.icon}</span><span class="ambient2">🌧️</span></div>`;
+ if(S.stage==='scene'){
+ let choices=rec.choices.map((c,i)=>`<button type="button" class="choice ${i===0?'primary':''}" data-choice="${i}" ${c.requires&&!c.requires(S)?'disabled':''}><div>${html(c.label)}${c.sub?`<span style="display:block">${html(c.sub)}</span>`:''}</div><span>›</span></button>`).join('');
+ $('scene').innerHTML=prefix+`<div class="eyebrow">${S.zone==='main'?'FŐTÖRTÉNET':'TITKOS KAZAMATA'} · ${html(place.name)}</div><h2>${html(rec.title)}</h2><div class="story">${html(rec.text)}</div><div class="options">${choices}</div>`;
+ $('scene').querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>{let choice=rec.choices[Number(b.dataset.choice)];if(choice.trap)trap(choice.trap);applyChoice(choice)}));
+ }else if(S.stage==='free'){
+ const moves=moveChoices(),special=[];
+ if(['m4','m9'].includes(S.current)&&!S.flags.dungeonDone)special.push(`<button type="button" id="reenter" class="danger">🌀 Belépés a titkos kazamatába <span>20 szoba, visszaút nélkül</span></button>`);
+ if(S.current==='m5')special.push('<button type="button" id="reopenShop">🛒 Visszatérek a kovácshoz</button>');
+ const choices=moves.map((n,i)=>`<button type="button" class="choice ${i===0?'primary':''}" data-go="${n.id}"><div>${n.icon} ${html(n.name)}<span style="display:block">${S.visited[n.id]?'Már meglátogatott helyszín':'Új felfedezhető hely'}</span></div><span>›</span></button>`).join('');
+ $('scene').innerHTML=prefix+`<div class="eyebrow">Felfedezés · ${html(place.name)}</div><h2>Merre tovább, ${html(S.name)}?</h2><p class="story">${html(rec.text)}</p>${S.zone==='dungeon'?'<p class="info alert">🔒 A kazamata kijárata lezárt. Csak a 20. helyszín Őrének legyőzésével térhetsz vissza.</p>':''}<div class="options">${special.join('')}${choices||'<div class="info">Minden út bejárva. Ha elakadtál, nézd meg a térképet.</div>'}</div>`;
+ $('scene').querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+ if($('reenter'))$('reenter').onclick=enterDungeon;
+ if($('reopenShop'))$('reopenShop').onclick=()=>{S.stage='shop';save();render()};
+ }else if(S.stage==='battle'){
+ const b=S.battle,e=ENEMIES[b.id];$('scene').innerHTML=prefix+`<div class="eyebrow">⚔️ ${e.boss?'FŐELLENSÉG':'HARC'} · ${html(place.name)}</div><h2>${html(e.name)}</h2><div class="row spread"><b>Ellenség HP: ${b.hp}/${b.maxHp}</b><span class="muted">Kör: ${b.round+1}</span></div><div class="hpbar"><span style="width:${b.hp/b.maxHp*100}%"></span></div><p class="info ${b.round%3===2?'alert':''}">${html(b.log)}<br>${html(b.intent)}</p><p class="small">Felszerelt fegyver: ${html(getItem(S.equip.weapon).name)} · Páncél: ${html(getItem(S.equip.armor).name)}</p><div class="options">
+<button data-act="attack" class="primary">⚔️ Támadás <span>2–5 + fegyversebzés</span></button><button data-act="spell" ${S.mana<2?'disabled':''}>🔮 Rúnavarázslat <span>2 mana · 5–9+ sebzés</span></button><button data-act="defend">🛡️ Védekezés <span>Kevesebb következő sebzés, +1 mana</span></button><button data-act="potion" ${!has('potion')?'disabled':''}>🧪 Gyógyital (${S.items.filter(i=>i==='potion').length}) <span>+7 HP, az ellenfél visszatámad</span></button><button data-act="mana" ${!has('manavial')?'disabled':''}>🔵 Rúnaesszencia (${S.items.filter(i=>i==='manavial').length}) <span>+4 mana</span></button><button data-act="bomb" ${!has('bomb')?'disabled':''}>💣 Szikrabomba (${S.items.filter(i=>i==='bomb').length}) <span>8 sebzés</span></button>${!e.boss?'<button data-act="flee">🏃 Menekülés <span>60% esély</span></button>':''}</div>`;
+ $('scene').querySelectorAll('[data-act]').forEach(b=>b.addEventListener('click',()=>battleMove(b.dataset.act)));
+ }else if(S.stage==='puzzle'){
+ const p=PUZZLES[S.puzzle.id];$('scene').innerHTML=prefix+`<div class="eyebrow">🧩 Interaktív fejtörő</div><h2>${html(p.title)}</h2><p class="story">${html(p.question)}</p><div class="options">${p.code?'<label class="label" for="codeField">Háromjegyű kód</label><input id="codeField" class="nameInput" inputmode="numeric" maxlength="3" placeholder="000"><button class="primary" id="codeSubmit">🔓 Kód megadása</button>':p.options.map((x,i)=>`<button data-answer="${i}" class="choice">${html(x)}</button>`).join('')}</div><p class="small">Hibás válasznál sérülés és vihar jár, de nem szorulsz örökre a terembe.</p>`;
+ if(p.code)$('codeSubmit').onclick=()=>finishPuzzle($('codeField').value);else $('scene').querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>finishPuzzle(b.dataset.answer));
+ }else if(S.stage==='shop'){
+ $('scene').innerHTML=prefix+`<div class="eyebrow">⚒️ Fegyverkovács</div><h2>Méretes készlet, kevés idő</h2><p>A kovács fegyvereket, páncélt és gyógyító eszközöket árul. Aranyad: <b>${S.gold}</b>.</p><div class="options">${SHOP.map(x=>`<button class="choice" data-buy="${x.id}" ${S.gold<x.price?'disabled':''}><div>${ITEMS[x.id].emoji} ${ITEMS[x.id].name}<span style="display:block">${ITEMS[x.id].desc}</span></div><b>${x.price} 🪙</b></button>`).join('')}<button id="shopClose" class="primary">🚶 Kilépek a boltból</button></div>`;
+ $('scene').querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>buy(b.dataset.buy));$('shopClose').onclick=()=>{S.stage='free';save();render()};
+ }else if(S.stage==='ending'){
+ const e=S.ending;$('scene').innerHTML=prefix+`<div class="eyebrow">ELSŐ FEJEZET TELJESÍTVE</div><h2>${html(e.title)}</h2><div class="end"><div class="victory">${e.icon} 🏆</div><p>${html(e.description)}</p><p><b>Eredmény:</b> ${S.hope} remény · ${S.storm} vihar · ${S.level}. szint · ${S.flags.dungeonDone?'Titkos kazamata teljesítve':'Titkos kazamata kihagyva'}</p></div><div class="info">A következő öt fejezet még fejlesztés alatt áll. Ez a prototípus az első, elágazó fejezet teljes, lezárható kalandját mutatja be.</div><div class="options"><button id="endingContinue" class="primary">🗺️ Visszanézem a térképet</button></div>`;
+ $('endingContinue').onclick=()=>{S.stage='free';save();render()};
+ }
+}
+function renderLog(){$('logShort').innerHTML=S.logs.slice(0,3).map(x=>`<div class="note">${html(x)}</div>`).join('')}
+function render(){if(!S)return;$('startScreen').hidden=true;$('gameScreen').hidden=false;$('resetBtn').hidden=false;renderStats();renderScene();renderMap();renderLog();save();}
+function showOverlay(title,body){$('overlayContent').innerHTML=`<div class="row spread"><h2>${html(title)}</h2><button id="closeOverlay" class="quiet">✕ Bezárás</button></div>${body}`;$('overlay').hidden=false;$('closeOverlay').onclick=closeOverlay;}
+function closeOverlay(){$('overlay').hidden=true}
+function bag(){const count={};for(let x of S.items)count[x]=(count[x]||0)+1;let body=`<p class="small">🗡️ Felszerelt fegyver: ${html(getItem(S.equip.weapon).name)} · 🛡️ Páncél: ${html(getItem(S.equip.armor).name)}</p>`;
+ body+=Object.entries(count).map(([id,n])=>{const it=getItem(id),equip=it.type==='weapon'||it.type==='armor';const equipped=equip&&S.equip[it.type]===id;
+ return `<div class="item"><b>${it.emoji} ${html(it.name)} ${n>1?'×'+n:''} ${equipped?'✅':''}</b><small><span class="rarity">${it.rarity||''}</span> · ${html(it.desc)}</small>${equip?`<button data-equip="${id}" ${equipped?'disabled':''}>${equipped?'Felszerelve':'Felszerelem'}</button>`:''}${it.type==='consumable'&&S.stage!=='battle'?`<button data-use="${id}">Felhasználom</button>`:''}</div>`}).join('');
+ showOverlay('🎒 Felszerelés és tárgyak',body+'<p class="small">A harcban a gyógyitalt, a bombát és az esszenciát a harcmenüből használd.</p>');
+ $('overlayContent').querySelectorAll('[data-equip]').forEach(b=>b.onclick=()=>{let id=b.dataset.equip;S.equip[ITEMS[id].type]=id;journal('🛡️ Felszerelve: '+ITEMS[id].name);save();render();bag()});
+ $('overlayContent').querySelectorAll('[data-use]').forEach(b=>b.onclick=()=>{let id=b.dataset.use;if(!take(id))return;if(id==='potion')effect({hp:7});if(id==='manavial')effect({mana:4});if(id==='bomb'){S.items.push(id);toast('A bombát csak harcban használhatod!')}else journal('🧪 Felhasználtad: '+ITEMS[id].name);save();render();bag()})}
+function quests(){return `<p>Fő küldetés: <b>Állítsd helyre az első pecsétet.</b></p><div class="stack">
+<div class="item">${S.flags.bossDead?'✅':'⬜'} Főellenség: A Megrepedt Szív ${S.flags.bossDead?'legyőzve':'még a mélyben vár'}.</div>
+<div class="item">${S.flags.gateBalanced||S.flags.gateSealed||S.flags.gateSavedPeople?'✅':'⬜'} Döntés a Nagy Zsilip sorsáról.</div>
+<div class="item">${has('ledger')?'✅':'⬜'} Bizonyíték: Ázott főkönyv. ${has('ledger')?'Nálad van.':'A könyvtár, az irattár vagy a sikátor nyomot adhat.'}</div>
+<div class="item">${S.flags.elaraAlly?'✅':S.flags.threatenedElara?'❌':'⬜'} Elara bizalma. ${S.flags.elaraAlly?'Szövetségesed.':S.flags.threatenedElara?'Elvesztetted a bizalmát.':'A menedékben találkozhatsz vele.'}</div>
+<div class="item">${S.flags.dungeonDone?'✅':'⬜'} Titkos kazamata. ${S.flags.dungeonDone?'Kijutottál és megszerezted a Mélység gyöngyét.':'A csatornaakna vagy a repedés vezethet a 20 szobás mellékpályára.'}</div></div>
+<h3>Legutóbbi események</h3>${S.logs.slice(0,22).map(x=>`<div class="note">${html(x)}</div>`).join('')}`}
+function help(){showOverlay('📖 Kalandor kézikönyve',`<p><b>Játék célja:</b> Járd be az elágazó Alsó Negyedet, dönts a Nagy Zsilip sorsáról, győzd le a szörnyet és állítsd helyre az első pecsétet. A kockát nem kell folyamatosan dobálnod.</p>
+<h3>🧭 Mozgás és döntések</h3><p>Az események után zölddel jelennek meg az elérhető helyszínek. Az útvonalat te választod. A már meglátogatott mezőkre visszatérhetsz; a korábbi jutalom nem ismételhető.</p>
+<h3>⚔️ Harc</h3><p>Minden akció után az ellenfél visszavág. A fegyver hozzáadódik a sebzésedhez, a páncél levonódik a kapott sebzésből. A varázslat 2 manát fogyaszt. Védekezés közben +1 manát kapsz. Az ellenfél minden harmadik körben különösen erősen támadhat. Ha elesel, teljesen meggyógyulsz és némi aranyat vesztesz, de újrapróbálhatod. A főellenségen ejtett sebek megmaradnak, így a küzdelem mindig teljesíthető.</p>
+<h3>🎒 Tárgyak</h3><p>A fegyvereket és páncélokat a <b>Táska</b> gombbal tudod felszerelni. A gyógyital +7 HP, a rúnaesszencia +4 mana, a szikrabomba harcban 8 sebzés. A kincsek és bizonyítékok későbbi eseményeket módosítanak.</p>
+<h3>🕊️ Remény és 🌩️ Vihar</h3><p>A remény a városba vetett bizalmat és a döntéseid erkölcsi következményeit jelzi. A vihar a növekvő veszély és káosz. <b>10 viharnál</b> viharcsapás ér: -3 HP, a viharszint 6-ra csökken. A befejezések a döntéseid és ezek az értékek szerint eltérnek.</p>
+<h3>🌀 Titkos kazamata</h3><p>20 különböző helyszín, saját elágazó térképpel. A bejárat mögött összeomlik a portál: <b>csak a végső Őr legyőzése után juthatsz vissza</b>. Nincs örökre beragadás: halál után a főellenséget újrapróbálhatod.</p>
+<h3>💾 Mentés</h3><p>Automatikus helyi mentés, saját kulccsal. Nem használ Firebase-t, nem módosítja az eredeti Záporváros adatait. Más böngésző vagy más webcím külön mentést jelent.</p><p class="small">A prototípus jelenleg az első fejezetet tartalmazza. A további öt fejezet és a kétjátékos változat külön fejlesztési szakasz.</p>`)}
+$('helpBtn').onclick=help;
+$('packBtn').onclick=bag;
+$('journalBtn').onclick=()=>showOverlay('📜 Küldetések és döntések',quests());
+$('logBtn').onclick=()=>showOverlay('📜 Küldetések és döntések',quests());
+$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))closeOverlay()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOverlay()});
+$('newBtn').onclick=()=>{if(load()&&!confirm('Felülírod az új Záporváros-kaland mentését? A régi 120 mezős játékét ez nem érinti.'))return;const hero=document.querySelector('input[name="class"]:checked').value;const name=$('heroName').value.trim().slice(0,20)||'Kalandor';S=newState(name,hero);render()};
+$('continueBtn').onclick=()=>{S=load();if(S)render();else toast('Nem található mentés.')};
+$('resetBtn').onclick=()=>{if(!confirm('Biztosan új kalandot szeretnél? A jelenlegi első fejezet mentése elveszik.'))return;S=null;$('gameScreen').hidden=true;$('startScreen').hidden=false;$('resetBtn').hidden=true;localStorage.removeItem(KEY);$('continueBtn').hidden=true;closeOverlay()};
+const saved=load();if(saved){$('continueBtn').hidden=false;$('heroName').value=saved.name}
+</script>
+</body>
+</html>
